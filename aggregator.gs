@@ -34,13 +34,22 @@ function getSheetData(SheetName) {
   rows = sheet.getDataRange().getValues();
   if (rows.length == 0) {return} // don't bother with empty sheets
   rows.shift(); // exclude the first row (column headers) of each sheet, usually the header
-  //rows.forEach(
+  
+  //  uncomment this section to insert the sheet tab name at the beginning of each row 
+  //  so that it can be queried against:
+   
+  /* 
+  rows.forEach( 
   //  function(value) {
-  //    value.unshift(SheetName) // uncomment this to insert the sheet tab name at the beginning of the row
-  //  });
+  //    value.unshift(SheetName) 
+    }); 
+  */
   Logger.log(rows)
   return rows;
 }
+
+// This is the function to actually invoke in an empty sheet via: =getAllSheetData()
+// For each sheet tab in a doc, grab and concatenate all the data into a single sheet
 
 function getAllSheetData() {
   var aggDump = new Array();
