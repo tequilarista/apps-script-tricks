@@ -34,6 +34,10 @@ function getSheetData(SheetName) {
   rows = sheet.getDataRange().getValues();
   if (rows.length == 0) {return} // don't bother with empty sheets
   rows.shift(); // exclude the first row (column headers) of each sheet, usually the header
+  //rows.forEach(
+  //  function(value) {
+  //    value.unshift(SheetName) // uncomment this to insert the sheet tab name at the beginning of the row
+  //  });
   Logger.log(rows)
   return rows;
 }
