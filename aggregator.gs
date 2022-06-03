@@ -55,7 +55,9 @@ function getAllSheetData() {
   var aggDump = new Array();
   var slist = getAllSheetNames();
   for (var i=0; i<slist.length; i++) 
-    aggDump = aggDump.concat(getSheetData(slist[i]));
+    var ret = getSheetData(slist[i]);
+    if (ret === null) { continue; } // this ensures that an empty row is not added to aggDump
+    aggDump = aggDump.concat(ret);
   Logger.log(aggDump)
   return aggDump;
 }
